@@ -11,30 +11,80 @@ class Graph:
         """
         Add a vertex to the graph.
         """
-        pass  # TODO
+        self.vertices[vertex] = set()
+        
     def add_edge(self, v1, v2):
         """
         Add a directed edge to the graph.
         """
-        pass  # TODO
+        if v1 in self.vertices and v2 in self.vertices:
+            self.vertices[v1].add(v2)
+        else:
+            raise IndexError("Can not create edge based on given vertices!")
+        
     def bft(self, starting_vertex):
         """
         Print each vertex in breadth-first order
         beginning from starting_vertex.
+
+        BFT Pseudocode
+        Create a queue
+        Create list of visited nodes
+        Put starting node in the queue
+        While: queue not empty
+        Pop first node out of queue
+        If not visited
+        Mark as visited
+        Get adjacent edges and add to list
+        Goto top of loop
+
         """
+        que = Queue()
+        visited = set()
+        que.enqueue(starting_vertex)
+        while que.size() > 0:
+            vertex = que.dequeue()
+            if vertex not in visited:
+                visited.add(vertex)
+                print(vertex)
+                for next_vert in self.vertices[vertex]:
+                    que.enqueue(next_vert)
+
         pass  # TODO
     def dft(self, starting_vertex):
         """
         Print each vertex in depth-first order
         beginning from starting_vertex.
+
+        Make a stack
+        Make visited list
+        Add first node to stack
+        While stack not empty:
+        Pop top item
+        if not visited:
+        Mark as visited
+        Get adjacent and add to stack
+
         """
-        pass  # TODO
+        questack = Stack()
+        visited = set()
+        questack.push(starting_vertex)
+        while questack.size() > 0:
+            vertex = questack.pop()
+            if vertex not in visited:
+                visited.add(vertex)
+                print(vertex)
+                for next_vert in self.vertices[vertex]:
+                    questack.push(next_vert)
+        
     def dft_recursive(self, starting_vertex):
         """
         Print each vertex in depth-first order
         beginning from starting_vertex.
         This should be done using recursion.
         """
+        # figure out exit condition (when are we finished)
+        # call itself, simplest case
         pass  # TODO
     def bfs(self, starting_vertex, destination_vertex):
         """
@@ -89,6 +139,7 @@ if __name__ == '__main__':
         1, 2, 4, 7, 6, 3, 5
         1, 2, 4, 6, 3, 5, 7
     '''
+    print("starting dft")
     graph.dft(1)
 
     '''
@@ -106,6 +157,7 @@ if __name__ == '__main__':
         1, 2, 4, 3, 7, 6, 5
         1, 2, 4, 3, 7, 5, 6
     '''
+    print('starting bft')
     graph.bft(1)
 
     '''
