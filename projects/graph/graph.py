@@ -94,7 +94,10 @@ class Graph:
             return 0
         if starting_vertex not in self.visited2:
             self.visited2.add(starting_vertex)
-            print(starting_vertex)
+            if starting_vertex is None:
+                pass
+            else:
+                print(starting_vertex)
             for next_vert in self.vertices[starting_vertex]:
                 self.dft_recursive(next_vert)
         else:
@@ -117,7 +120,54 @@ class Graph:
         starting_vertex to destination_vertex in
         breath-first order.
         """
-        pass  # TODO
+        finalList = []
+        newList = []
+        que = Queue()
+        visited = set()
+        que.enqueue(starting_vertex)
+        while que.size() > 0:
+            vertex = que.dequeue()
+            if vertex is destination_vertex:
+                #newList.append(vertex)
+                #print(newList)
+                dVert = destination_vertex
+                #print(dVert)
+                newList.reverse()
+                for listItem in newList:
+                    #print(f'{newList} AAA')
+                    #print(f'{listItem} BBB')
+                    if dVert in self.vertices[listItem]:
+                        dVert = listItem
+                        finalList.append(listItem)
+                        #print(f'{dVert} hello')
+                    else:
+                        #print(f'{newList[0]} test')
+                        dVert
+                        #newList.pop(0)
+                finalList.reverse()
+                finalList.append(destination_vertex)
+                return finalList
+            if vertex not in visited:
+                visited.add(vertex)
+                newList.append(vertex)
+                #print(vertex)
+                for next_vert in self.vertices[vertex]:
+                           que.enqueue(next_vert)
+        
+                    # we need to create some sort of branching list
+                    # the problem is storage
+                    # if it branches once thats fine
+                    # if it's more than once say 4 times
+                    # what happens?
+                    # Once you find the destination
+                    # we have a list of all the points in the dictionary
+                    # take the list we used to build up the initial graph
+                    # save the starting point, reverse the list
+                    # take the first number (the destination), check the remaining numbers in the list to see if it's found in one of their values
+                    # add the current destination to a new list
+                    # the found number becomes the new destination, and you repeat until the new destination and the starting vertex match
+
+                    
     def dfs(self, starting_vertex, destination_vertex):
         """
         Return a list containing a path from
@@ -164,8 +214,8 @@ if __name__ == '__main__':
         1, 2, 4, 7, 6, 3, 5
         1, 2, 4, 6, 3, 5, 7
     '''
-    print("starting dft")
-    graph.dft(1)
+   # print("starting dft")
+   #graph.dft(1)
 
     '''
     Valid BFT paths:
@@ -192,13 +242,14 @@ if __name__ == '__main__':
         1, 2, 4, 7, 6, 3, 5
         1, 2, 4, 6, 3, 5, 7
     '''
-    print('starting dft_recursive')
-    graph.dft_recursive(1)
+    #print('starting dft_recursive')
+    #graph.dft_recursive(1)
 
     '''
     Valid BFS path:
         [1, 2, 4, 6]
     '''
+    print('starting bfs')
     print(graph.bfs(1, 6))
 
     '''
