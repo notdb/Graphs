@@ -174,7 +174,31 @@ class Graph:
         starting_vertex to destination_vertex in
         depth-first order.
         """
-        pass  # TODO
+        newList = []
+        finalList = []
+        questack = Stack()
+        visited = set()
+        questack.push(starting_vertex)
+        while questack.size() > 0:
+            vertex = questack.pop()
+            if vertex is destination_vertex:
+                dVert = destination_vertex
+                newList.reverse()
+                for listItem in newList:
+                    if dVert in self.vertices[listItem]:
+                        dVert = listItem
+                        finalList.append(listItem)
+                    else:
+                        dVert
+                finalList.reverse()
+                finalList.append(destination_vertex)
+                return finalList
+            if vertex not in visited:
+                visited.add(vertex)
+                newList.append(vertex)
+                print(vertex)
+                for next_vert in self.vertices[vertex]:
+                    questack.push(next_vert)
 
 
 
@@ -257,4 +281,5 @@ if __name__ == '__main__':
         [1, 2, 4, 6]
         [1, 2, 4, 7, 6]
     '''
+    print('starting dfs')
     print(graph.dfs(1, 6))
