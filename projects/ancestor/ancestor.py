@@ -1,7 +1,3 @@
-
-def earliest_ancestor(ancestors, starting_node):
-    pass
-
 # I get that we have parent child pairs
 # Each node is assigned a unique integer identifier
 
@@ -54,3 +50,11 @@ def earliest_ancestor(ancestors, starting_node):
 # can probably be done recursively, may or may not attempt
 
 # also looks slimilar to a DFS like I said earlier
+
+def earliest_ancestor(ancestors, starting_node):
+    # loop through the ancestors and print each ancestor whose tuple contains the starting node
+    for (x, y) in ancestors:
+        if y is starting_node:
+            print(True, (x, y))
+
+earliest_ancestor([(1, 3), (2, 3), (3, 6), (5, 6), (5, 7), (4, 5), (4, 8), (8, 9), (11, 8), (10, 1)], 6)
