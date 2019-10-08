@@ -266,8 +266,8 @@ if __name__ == '__main__':
         1, 2, 4, 7, 6, 3, 5
         1, 2, 4, 6, 3, 5, 7
     '''
-    #print('starting dft_recursive')
-    #graph.dft_recursive(1)
+    print('starting dft_recursive')
+    graph.dft_recursive(1)
 
     '''
     Valid BFS path:
