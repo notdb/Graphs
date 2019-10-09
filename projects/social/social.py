@@ -66,7 +66,26 @@ class SocialGraph:
 
 if __name__ == '__main__':
     sg = SocialGraph()
-    sg.populateGraph(10, 2)
+    #sg.populateGraph(10, 2)
+    #print(sg.friendships)
+    #connections = sg.getAllSocialPaths(1)
+    #print(connections)
+    sg.addUser('tom')
+    sg.addUser('larry')
+    sg.addFriendship(1,2)
+    print(sg.users)
     print(sg.friendships)
-    connections = sg.getAllSocialPaths(1)
-    print(connections)
+
+def number(array):
+    newList = []
+    for num in array:
+        for num1 in array:
+            if num is num1:
+                pass
+            elif (num1, num) in newList:
+                pass
+            else:
+                newList.append((num, num1))
+    return print(newList)
+
+number([1,2,3,4,5,6,7,8,9,10])

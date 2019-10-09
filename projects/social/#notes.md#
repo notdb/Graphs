@@ -39,3 +39,6 @@ pull 2 out and use 2 to make the relationships from the remaining balls, [3,4]
 gonn have to think about this some more, because what happens with 3, 1 is never
 friends with 3, so does that mean we can put 1 back in the bag? and that the
 relationships only exist for a set of balls at a time?
+
+We can make a list of all the friendship combinations and remove
+duplicates. That should work.
