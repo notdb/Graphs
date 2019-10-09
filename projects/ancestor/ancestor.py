@@ -53,8 +53,30 @@
 
 def earliest_ancestor(ancestors, starting_node):
     # loop through the ancestors and print each ancestor whose tuple contains the starting node
-    for (x, y) in ancestors:
-        if y is starting_node:
-            print(True, (x, y))
+    newList3 = []
+    def new_stuff(ancestors, starting_node):
+        newList = []
+        newList.append(starting_node)
+        newList2 = []
+        newList2.append(starting_node)
+        num = 0
+        for (x, y) in ancestors:
+            if y is starting_node:
+            #print(True, (x, y))
+                new_stuff([(1, 3), (2, 3), (3, 6), (5, 6), (5, 7), (4, 5), (4, 8), (8, 9), (11, 8), (10, 1)], x)
+                #print(x)
+                newList.append(x)
+            else:
+                newList.append(y)
+        
+        newList2.append(newList)
+        return newList3.append(newList2[0])
+    new_stuff(ancestors, starting_node)
+    if newList3[0] is starting_node:
+        newList3[0] = -1
+    return newList3[0]
 
-earliest_ancestor([(1, 3), (2, 3), (3, 6), (5, 6), (5, 7), (4, 5), (4, 8), (8, 9), (11, 8), (10, 1)], 6)
+test_ancestors = [(1, 3), (2, 3), (3, 6), (5, 6), (5, 7), (4, 5), (4, 8), (8, 9), (11, 8), (10, 1)]
+
+earliest_ancestor(test_ancestors, 1)
+
