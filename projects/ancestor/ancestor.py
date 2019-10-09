@@ -78,5 +78,54 @@ def earliest_ancestor(ancestors, starting_node):
 
 test_ancestors = [(1, 3), (2, 3), (3, 6), (5, 6), (5, 7), (4, 5), (4, 8), (8, 9), (11, 8), (10, 1)]
 
-earliest_ancestor(test_ancestors, 1)
+#earliest_ancestor(test_ancestors, 1)
 
+def earliest_ancestor2(ancestors, starting_node):
+    class Graph:
+        def __init__(self):
+            self.vertices = {}
+            self.visited2 = set()
+        def add_vertex(self, vertex):
+            self.vertices[vertex] = set()
+        
+        def add_edge(self, v1, v2):
+            if v1 in self.vertices and v2 in self.vertices:
+                self.vertices[v1].add(v2)
+            else:
+                raise IndexError("Can not create edge based on given vertices!")
+    # create new graph
+    graph = Graph()
+    newSet = set()
+
+    # add vertices
+    for (x, y) in ancestors:
+         newSet.add(x)
+         newSet.add(y)
+    for thing in newSet:
+        graph.add_vertex(thing)
+    # add edges
+    for (x, y) in ancestors:
+        graph.add_edge(x, y)
+        
+    def dft_recursive(starting_vertex):
+        """
+        Print each vertex in depth-first order
+        beginning from starting_vertex.
+        This should be done using recursion.
+        """
+        if len(graph.visited2) == len(graph.vertices):
+            return 0
+        if starting_vertex not in graph.visited2:
+            graph.visited2.add(starting_vertex)
+            if starting_vertex is None:
+                pass
+            else:
+                print(starting_vertex)
+            for next_vert in graph.vertices[starting_vertex]:
+                dft_recursive(next_vert)
+        else:
+            pass
+
+    dft_recursive(starting_node)
+
+earliest_ancestor2(test_ancestors, 6)         
