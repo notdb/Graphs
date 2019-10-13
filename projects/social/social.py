@@ -65,7 +65,7 @@ class SocialGraph:
         
         print(self.friendships)
         
-    def getAllSocialPaths(self, userID):
+    def getAllSocialPaths(self, userID:)
         """
         Takes a user's userID as an argument
 
