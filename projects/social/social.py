@@ -1,4 +1,4 @@
-
+import random
 
 class User:
     def __init__(self, name):
@@ -47,10 +47,25 @@ class SocialGraph:
         # !!!! IMPLEMENT ME
 
         # Add users
+        for i in range(0, numUsers):
+            self.addUser(f'name:{i}')
+        #print(self.users)
 
         # Create friendships
-
-    def getAllSocialPaths(self, userID):
+        for user in self.users:
+            for user1 in self.users:
+                if user is user1:
+                    pass
+                elif self.friendships[user1]:
+                    print('a')
+                else:
+                    self.addFriendship(user, user1)
+                    print('user')
+                    print(self.friendships[user1])
+        
+        print(self.friendships)
+        
+    def getAllSocialPaths(self, userID:)
         """
         Takes a user's userID as an argument
 
@@ -68,5 +83,26 @@ if __name__ == '__main__':
     sg = SocialGraph()
     sg.populateGraph(10, 2)
     print(sg.friendships)
-    connections = sg.getAllSocialPaths(1)
-    print(connections)
+    #connections = sg.getAllSocialPaths(1)
+    #print(connections)
+    #sg.addUser('tom')
+    #sg.addUser('larry')
+    #sg.addFriendship(1,2)
+    #print(sg.users)
+    #print(sg.friendships)
+
+def number(array):
+    newList = []
+    for num in array:
+        for num1 in array:
+            if num is num1:
+                pass
+            elif (num1, num) in newList:
+                pass
+            else:
+                newList.append((num, num1))
+    return newList
+
+#newList2 = number([1,2,3,4,5,6,7,8,9,10])
+#print(newList2)
+
